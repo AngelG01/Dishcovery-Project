@@ -1,0 +1,73 @@
+{% extends 'common/base.html' %}
+
+{% load to_range %}
+{% block content %}
+    <div class="recipe-details-container">
+        <header class="recipe-header">
+            <h1>{{ recipe.title }}</h1>
+            <p>by {{ recipe.author.username }}</p>
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+        </header>
+
+        <section class="recipe-description">
+            <h2>Description</h2>
+            <p>{{ recipe.description }}</p>
+        </section>
+
+        <section class="recipe-ingredients">
+            <h3>Ingredients</h3>
+            <p>{{ recipe.ingredients|linebreaksbr }}</p>
+        </section>
+
+        <section class="recipe-steps">
+            <h3>Instructions</h3>
+            <p>{{ recipe.instructions }}</p>
+        </section>
+
+        <!-- Rating Section -->
+        <section class="recipe-rating">
+            <h3>Average Rating</h3>
+            {% if average_rating %}
+                <div class="stars">
+                    {% for i in 5|to_range %}
+                        <span class="star {% if i <= average_rating %}filled{% endif %}">&#9733;</span>
+                    {% endfor %}
+                </div>
+                <p>Rating: {{ average_rating|floatformat:1 }}</p>
+            {% else %}
+                <p>No ratings yet.</p>
+            {% endif %}
+        </section>
+
+        <section class="rate-recipe-form">
+            <h3>Rate this Recipe</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ rating_form.as_p }}
+                <button type="submit" name="rating">Submit Rating</button>
+            </form>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="recipe-comments">
+            <h3>Comments</h3>
+            {% for comment in comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
+                    <p><small>{{ comment.created_at|date:"Y-m-d H:i" }}</small></p>
+                </div>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+
+            <div class="add-comment">
+                <h3>Add a Comment</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button type="submit" name="comment">Post Comment</button>
+                </form>
+            </div>
+        </section>
+    </div>
+{% endblock %}

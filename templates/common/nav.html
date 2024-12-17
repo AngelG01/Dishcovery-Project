@@ -1,0 +1,28 @@
+{% load static %}
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="logo">
+        <a href="/">Dishcovery</a>
+    </div>
+    <ul class="nav-links">
+
+        {% if request.user.is_authenticated %}
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Add a Recipe</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">My Recipes</a></li>
+            <li>
+
+                <form method="post" action="#" style="display: inline;">
+                    {% csrf_token %}
+                    <button class="button" type="submit"><i>Logout</i></button>
+                </form>
+
+            </li>
+        {% else %}
+            <li><a href="#">Browse Recipes</a></li>
+            <li><a href="#">Log In</a></li>
+        {% endif %}
+    </ul>
+</nav>

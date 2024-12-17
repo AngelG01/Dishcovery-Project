@@ -1,0 +1,5 @@
+@import './home.css';
+@import "./login_page.css";
+@import "./registration_page.css";
+@import "./add-recipe-page.css";
+@import "recipe-details.css";

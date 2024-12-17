@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dishcovery - Explore Recipes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header>
+    {% include 'common/nav.html' %}
+</header>
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<footer>
+    <p>&copy; 2024 Dishcovery. All rights reserved.</p>
+    <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/contact-us">Contact Us</a></p>
+</footer>
+
+</body>
+</html>
