@@ -8,4 +8,5 @@ class Profile(models.Model):
     user = models.OneToOneField(UserModel, on_delete=models.CASCADE, primary_key=True)
     username = models.CharField(max_length=30, unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='profile_pictures', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pictures', default='default_profile_pic.jpg', null=True,
+                                        blank=True)

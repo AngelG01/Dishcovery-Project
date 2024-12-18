@@ -1,0 +1,27 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Profile Details</h2>
+        </div>
+        <div class="profile-picture">
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+            {% else %}
+                <img src="{% static 'images/default_profile_pic.jpg' %}" alt="Default Profile Picture">
+            {% endif %}
+        </div>
+
+        <div class="profile-info">
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+            <p><strong>Username:</strong> {{ profile.username }}</p>
+            <p><strong>Date of Birth:</strong> {{ profile.date_of_birth|default:"Not set" }}</p>
+        </div>
+
+
+        <div class="profile-links">
+            <a href="{% url 'edit-profile' request.user.profile.pk %}">Edit Profile</a>
+        </div>
+    </div>
+{% endblock %}

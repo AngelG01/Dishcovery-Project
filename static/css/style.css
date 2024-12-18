@@ -1,1 +1,5 @@
 @import './home-page.css';
+@import './login_page.css';
+@import './registration_page.css';
+@import "./profile_details.css";
+@import './edit_profile.css';

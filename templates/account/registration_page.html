@@ -7,13 +7,13 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="id_username">Username</label>
-                    {{ form.username }}
-                    {{ form.username.errors }}
-
                     <label for="id_email">Email</label>
                     {{ form.email }}
                     {{ form.email.errors }}
+
+                    <label for="id_username">Username</label>
+                    {{ form.username }}
+                    {{ form.username.errors }}
 
                     <label for="id_password1">Password</label>
                     {{ form.password1 }}

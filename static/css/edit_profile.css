@@ -1,0 +1,130 @@
+/* Profile Container */
+.profile-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #333;
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-header h2 {
+    font-size: 2.5rem;
+    color: #45a29e; /* Main app color */
+    font-weight: 600;
+}
+
+/* Form Elements */
+.profile-info p {
+    font-size: 1.1rem;
+    color: #0b0c10; /* Dark background color */
+    margin-bottom: 20px;
+}
+
+.profile-info strong {
+    color: #45a29e; /* Main app color */
+    font-weight: bold;
+}
+
+/* Input Fields */
+input[type="text"], input[type="date"], input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+input[type="file"] {
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Profile Picture Section */
+.profile-picture {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-picture label {
+    font-size: 1.1rem;
+    color: #45a29e; /* Main app color */
+}
+
+/* Placeholder for Profile Picture */
+.profile-picture-placeholder {
+    font-size: 1.1rem;
+    color: #777;
+    text-align: center;
+}
+
+/* Save Button */
+.profile-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.profile-links .btn {
+    background-color: #45a29e; /* Main app color */
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-links .btn:hover {
+    background-color: #0b0c10; /* Dark background color */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .profile-header h2 {
+        font-size: 2rem;
+    }
+
+    .profile-info p {
+        font-size: 1rem;
+    }
+
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+
+    input[type="text"], input[type="date"], input[type="file"] {
+        font-size: 1rem;
+    }
+}
+
+.button-spacing {
+    margin-top: 20px; /* Adjust the spacing as needed */
+}
