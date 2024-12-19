@@ -9,9 +9,9 @@
 
         {% if request.user.is_authenticated %}
             <li><a href="{% url 'home-page' %}">Home</a></li>
-            <li><a href="#">Add a Recipe</a></li>
+            <li><a href="{% url 'add-recipe' %}">Add a Recipe</a></li>
             <li><a href="{% url 'profile-details' request.user.profile.pk %}">Profile</a></li>
-            <li><a href="#">My Recipes</a></li>
+            <li><a href="#">Recipe Recommendation</a></li>
             <li>
 
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">

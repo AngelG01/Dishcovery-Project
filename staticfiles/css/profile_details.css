@@ -1,0 +1,125 @@
+/* Profile Container */
+.profile-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #333;
+    text-align: center; /* Center all text in the container */
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile-header h2 {
+    font-size: 2.5rem;
+    color: #45a29e; /* Main app color */
+    font-weight: 600;
+}
+
+/* Profile Content - Using Flexbox to center */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center elements horizontally */
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Profile Info */
+.profile-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-info p {
+    font-size: 1.1rem;
+    color: #0b0c10; /* Dark background color */
+    margin-bottom: 20px;
+}
+
+.profile-info strong {
+    color: #45a29e; /* Main app color */
+    font-weight: bold;
+}
+
+/* Profile Picture Section */
+.profile-picture {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-picture p {
+    font-size: 1.2rem;
+    color: #45a29e; /* Main app color */
+    margin-top: 10px;
+}
+
+/* Placeholder for Profile Picture */
+.profile-picture-placeholder {
+    font-size: 1.1rem;
+    color: #777;
+    text-align: center;
+}
+
+/* No profile picture uploaded message */
+.profile-picture p.no-picture {
+    font-size: 1.1rem;
+    color: #0b0c10;
+    text-align: center;
+}
+
+/* Link Styles (for editable links, etc.) */
+.profile-links a {
+    text-decoration: none;
+    color: #45a29e; /* App color */
+    font-weight: 500;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.profile-links a:hover {
+    color: #0b0c10; /* Hover color */
+    text-decoration: underline;
+}
+
+/* Container for profile links (edit, etc.) */
+.profile-links {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .profile-header h2 {
+        font-size: 2rem;
+    }
+
+    .profile-info p {
+        font-size: 1rem;
+    }
+
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+    }
+}

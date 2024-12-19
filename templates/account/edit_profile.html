@@ -35,15 +35,6 @@
                 <button type="submit" class="btn btn-primary">Save Changes</button>
             </div>
 
-            <!-- Delete Button -->
-            <div class="delete-profile button-spacing">
-                <a href="{% url 'delete-profile' profile.pk %}">
-                    <img
-                            class="bin-img"
-                            src="{% static 'images/icon-remove-22.jpg' %}"
-                            alt="bin button"
-                    />
-                </a>
-            </div>
+        </form>
     </div>
 {% endblock %}

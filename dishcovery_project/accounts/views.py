@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
+from django.views.generic import CreateView, UpdateView, DetailView
 
 from dishcovery_project.accounts.forms import CustomUserCreationForm, CustomUserAuthenticationForm, ProfileEditForm
 from dishcovery_project.accounts.models import Profile
@@ -17,6 +17,15 @@ class RegisterUserView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'account/registration_page.html'
     success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        user = form.save()
+
+        profile, _ = Profile.objects.get_or_create(user=user)
+        profile.username = user.username
+        profile.save()
+
+        return super().form_valid(form)
 
 
 class LoginUserView(LoginView):
@@ -49,18 +58,23 @@ class ProfileEditView(UpdateView):
     template_name = 'account/edit_profile.html'
 
     def get_object(self, queryset=None):
+        # Returns the profile instance to be edited
         return self.request.user.profile
 
+    def form_valid(self, form):
+        # Save the Profile form first
+        profile = form.save(commit=False)
+        profile.save()
+
+        # Sync the username with the UserModel (custom user model)
+        user = self.request.user
+        if user.username != profile.username:
+            user.username = profile.username
+            user.save()
+
+        # Return a redirect to the success URL
+        return HttpResponseRedirect(self.get_success_url())
+
     def get_success_url(self):
-        # Using the profile pk explicitly instead of self.object.pk
+        # Return the URL to the profile details page
         return reverse_lazy('profile-details', kwargs={'pk': self.request.user.profile.pk})
-
-
-class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Profile
-    template_name = 'account/profile_delete_page.html'
-    success_url = reverse_lazy('login')
-
-    def test_func(self):
-        profile = self.get_object_or_404(Profile, pk=self.kwargs['pk'])
-        return self.request.user == profile

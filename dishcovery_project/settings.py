@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 MY_APPS = [
     'dishcovery_project.accounts',
     'dishcovery_project.common',
-    'dishcovery_project.recipe_recommendation',
+
     'dishcovery_project.recipes',
 ]
 
@@ -127,6 +127,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
@@ -139,3 +141,5 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 LOGIN_REDIRECT_URL = reverse_lazy('home-page')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+

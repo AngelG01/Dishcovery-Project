@@ -1,0 +1,59 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="recipe-details-container">
+        <header class="recipe-header">
+            <h1>{{ recipe.title }}</h1>
+            <p>by {{ recipe.author.username }}</p>
+            <div class="recipe-image-container">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+                {% if request.user == recipe.author %}
+                    <a href="{% url 'recipe-edit' pk=recipe.pk %}" class="edit-recipe-btn">
+                        <img src="{% static 'images/edit_pen.jpg' %}" alt="Edit" width="30" height="30">
+                    </a>
+                {% endif %}
+            </div>
+        </header>
+
+        <section class="recipe-description">
+            <h2>Description</h2>
+            <p>{{ recipe.description }}</p>
+        </section>
+
+        <section class="recipe-ingredients">
+            <h3>Ingredients</h3>
+            <p>{{ recipe.ingredients|linebreaksbr }}</p>
+        </section>
+
+        <section class="recipe-steps">
+            <h3>Instructions</h3>
+            <p>{{ recipe.instructions }}</p>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="recipe-comments">
+            <h3>Comments</h3>
+            {% for comment in comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }}</p>
+                    <p><small>{{ comment.created_at|date:"Y-m-d H:i" }}</small></p>
+                </div>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+            <div class="add-comment">
+                <h3>Add a Comment</h3>
+                {% if user.is_authenticated %}
+                    <form method="post" id="comment-form">
+                        {% csrf_token %}
+                        {{ comment_form.as_p }}
+                        <button type="submit">Post Comment</button>
+                    </form>
+                {% else %}
+                    <p>You must <a href="{% url 'login' %}">log in</a> to add a comment.</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

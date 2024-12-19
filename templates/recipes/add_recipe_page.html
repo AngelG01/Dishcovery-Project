@@ -1,0 +1,43 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Link to Add Recipe Page CSS -->
+    <link rel="stylesheet" href="{% static 'css/add_recipe_page.css' %}">
+
+    <!-- Add Recipe Form Container -->
+    <div class="add-recipe-container">
+        <h2 class="add-recipe-title">Add Your Recipe</h2>
+
+        <!-- Form -->
+        <form method="post" enctype="multipart/form-data" class="recipe-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+            </div>
+
+            <div class="form-group">
+                {{ form.description.label_tag }}
+                {{ form.description }}
+            </div>
+
+            <div class="form-group">
+                {{ form.ingredients.label_tag }}
+                {{ form.ingredients }}
+            </div>
+
+            <div class="form-group">
+                {{ form.instructions.label_tag }}
+                {{ form.instructions }}
+            </div>
+
+            <div class="form-group">
+                {{ form.image.label_tag }}
+                {{ form.image }}
+            </div>
+
+            <button type="submit" class="btn-submit">Add Recipe</button>
+        </form>
+    </div>
+{% endblock %}

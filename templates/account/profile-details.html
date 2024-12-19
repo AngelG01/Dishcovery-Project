@@ -19,7 +19,6 @@
             <p><strong>Date of Birth:</strong> {{ profile.date_of_birth|default:"Not set" }}</p>
         </div>
 
-
         <div class="profile-links">
             <a href="{% url 'edit-profile' request.user.profile.pk %}">Edit Profile</a>
         </div>

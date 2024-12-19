@@ -1,0 +1,82 @@
+/* Container styling */
+.confirm-delete-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading styling */
+.confirm-delete-container h2 {
+    color: #dc3545; /* Red for emphasis */
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* Paragraph styling */
+.confirm-delete-container p {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* Button styling */
+.confirm-delete-container form button,
+.confirm-delete-container a.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Delete Button */
+.confirm-delete-container form button {
+    background-color: #dc3545; /* Red */
+    color: #fff;
+}
+
+.confirm-delete-container form button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Cancel Button */
+.confirm-delete-container a.btn {
+    background-color: #6c757d; /* Gray */
+    color: #fff;
+}
+
+.confirm-delete-container a.btn:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .confirm-delete-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .confirm-delete-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .confirm-delete-container p {
+        font-size: 1rem;
+    }
+
+    .confirm-delete-container form button,
+    .confirm-delete-container a.btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
